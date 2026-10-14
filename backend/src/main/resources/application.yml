@@ -1,0 +1,23 @@
+spring:
+    application:
+        name: wallet
+    datasource:
+        url: ${DB_URL:jdbc:mysql://localhost:3306/wallet?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
+        username: ${DB_USERNAME:wallet_app}
+        password: ${DB_PASSWORD:changeme}
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+                format_sql: true
+
+app:
+    jwt:
+        secret: ${JWT_SECRET:dev-secret-change-me-please-32chars-min}
+        expiration-minutes: ${JWT_EXPIRATION_MINUTES:30}
+    cors:
+        allowed-origin: ${CORS_ALLOWED_ORIGIN:http://localhost:5173}
